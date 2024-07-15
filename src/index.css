@@ -1,0 +1,30 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*, HTML, body, *::after, *::before{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  line-height: normal;
+}
+
+li > a{
+  color: #737373;
+  font-size: 1.125rem;
+  line-height: 1.725rem;
+}
+
+/* Styles for the active NavLink */
+li > a.active {
+  color: #737373!important; /* Change this to your desired color for the active link */
+  background-color: rgba(255, 255, 255, 0) !important;
+  font-weight: bold; /* Any additional styles for the active link */
+  text-decoration: underline; /* Optional: add underline for active link */
+}
+
+form > *{
+
+}
