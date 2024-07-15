@@ -1,7 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../component/Navbar";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { AuthContext } from "../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -10,11 +12,28 @@ const Login = () => {
   const [loginError, setLoginError] = useState("");
   const [loginSuccess, setLoginSuccess] = useState("");
 
-  const handleLogin = (e) =>{
-    e.preventDefaults();
+  const { logIn } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
     setLoginError('');
     setLoginSuccess('');
-    console.log(email, password);
+    try{
+      const result = await logIn(email, password);
+      console.log(result.user);
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "User Successfully Logged In.",
+        showConfirmButton: false,
+        timer: 1500
+      });
+      navigate('/');
+    }catch(error){
+      console.error(error.message);
+    }
   }
 
   return (
