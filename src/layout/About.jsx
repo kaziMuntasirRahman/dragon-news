@@ -1,7 +1,10 @@
+import SocialAuth from "../component/SocialAuth";
+
 const About = () => {
   return (
-    <div className="text-center text-9xl my-40">
+    <div className="text-center my-40">
       This is ABOUT page
+      <SocialAuth />
     </div>
   );
 };
