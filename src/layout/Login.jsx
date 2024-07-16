@@ -1,9 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
-import Navbar from "../component/Navbar";
 import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { AuthContext } from "../providers/AuthProvider";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import Navbar from "../component/Navbar";
+import { AuthContext } from "../providers/AuthProvider";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -20,7 +20,7 @@ const Login = () => {
     e.preventDefault();
     setLoginError('');
     setLoginSuccess('');
-    try{
+    try {
       const result = await logIn(email, password);
       console.log(result.user);
       Swal.fire({
@@ -30,9 +30,12 @@ const Login = () => {
         showConfirmButton: false,
         timer: 1500
       });
-      navigate('/');
-    }catch(error){
+
+      setTimeout(()=>navigate('/'),1500);
+    } catch (error) {
       console.error(error.message);
+      console.log(error.message);
+      setLoginError(error.message);
     }
   }
 
@@ -81,7 +84,7 @@ const Login = () => {
 
           {loginError && <p className="text-red-600">{loginError}</p>}
           {loginSuccess && <p className="text-green-600">{loginSuccess}</p>}
-          <button type="submit" className="text-white bg-neutral-700 rounded-[5px] p-5">Register</button>
+          <button type="submit" className="text-white bg-neutral-700 rounded-[5px] p-5">Login</button>
           <p className="text-neutral-700 text-lg text-center">
             Don&apos;t have an account?
             <Link

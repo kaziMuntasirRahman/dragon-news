@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Bayern Slams Authorities Over Flight Delay to Club World Cup",
+    "category": "Sports",
+    "img": "/assets/1.png",
+    "date": "2023-07-15"
+  },
+  {
+    "title": "Tech Giants Face New Regulations in EU",
+    "category": "Technology",
+    "img": "/assets/2.png",
+    "date": "2023-07-14"
+  },
+  {
+    "title": "Global Markets Rally Amid Economic Recovery Hopes",
+    "category": "Finance",
+    "img": "/assets/3.png",
+    "date": "2023-07-13"
+  }
+]

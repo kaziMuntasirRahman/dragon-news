@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
-import { AuthContext } from "../providers/AuthProvider";
-import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const SocialAuth = () => {
   const { googleSignIn, githubSignIn } = useContext(AuthContext);
@@ -47,7 +47,7 @@ const SocialAuth = () => {
 
 
   return (
-    <div className="flex flex-col gap-2 max-w-min border p-1">
+    <div className="flex flex-col gap-2 w-full p-1">
       <h2 className="text-neutral-700 text-left text-xl font-semibold mb-3">Login With</h2>
 
       <button onClick={handleGoogleSignIn} className="btn btn-sm btn-outline btn-info w-64">
