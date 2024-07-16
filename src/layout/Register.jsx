@@ -16,11 +16,11 @@ const Register = () => {
   const [acceptedTerms, setAcceptTerms] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
-  const { createUser } = useContext(AuthContext);
+  const { createUser, loading, setLoading } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
-  const handleRegister = async(e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     setRegisterError('');
     setRegisterSuccess('');
@@ -44,26 +44,28 @@ const Register = () => {
       setRegisterError("*Password must contain a special character.");
       return;
     }
-    try{
+    try {
       const result = await createUser(email, password);
       console.log(result.user);
       await updateProfile(result.user, {
-          displayName: name,
-          photoURL: photoURL
-        })
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "User Profile Successfully Created.",
-          showConfirmButton: false,
-          timer: 1500
-        });
-        navigate('/');
-              
-    } catch(error) {
-        setRegisterError(error.message);
-        console.log(error.message);
-      }
+        displayName: name,
+        photoURL: photoURL
+      })
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "User Profile Successfully Created.",
+        showConfirmButton: false,
+        timer: 1500
+      });
+      navigate('/');
+
+    } catch (error) {
+      setRegisterError(error.message);
+      console.log(error.message);
+      setLoading(false); // Stop the loading spinner on error
+
+    }
   }
 
 
@@ -72,6 +74,15 @@ const Register = () => {
 
   return (
     <div className="bg-zinc-100 pb-10">
+
+      {(loading) &&
+        <div className="absolute left-0 top-0 size-full flex items-center justify-center z-10 bg-slate-200 bg-opacity-25">
+          <span
+            className="loading loading-spinner scale-[5]"
+          />
+        </div>
+      }
+
       <Navbar />
       <section className="bg-white w-[750px] mx-auto py-[88px] px-[72px]">
         <p className="text-center text-neutral-700 text-4xl font-semibold ">Register Your Account</p>

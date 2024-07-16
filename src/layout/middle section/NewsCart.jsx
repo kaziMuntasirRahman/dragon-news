@@ -54,7 +54,7 @@ const NewsCart = ({news}) => {
 };
 
 NewsCart.propTypes = {
-  news: PropTypes.node
+  news: PropTypes.object
 }
 
 

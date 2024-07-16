@@ -12,7 +12,7 @@ const Login = () => {
   const [loginError, setLoginError] = useState("");
   const [loginSuccess, setLoginSuccess] = useState("");
 
-  const { logIn } = useContext(AuthContext);
+  const { logIn, loading } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -31,7 +31,7 @@ const Login = () => {
         timer: 1500
       });
 
-      setTimeout(()=>navigate('/'),1500);
+      setTimeout(() => navigate('/'), 1500);
     } catch (error) {
       console.error(error.message);
       console.log(error.message);
@@ -41,6 +41,15 @@ const Login = () => {
 
   return (
     <div className="bg-zinc-100 pb-10">
+
+      {(loading) &&
+        <div className="absolute left-0 top-0 size-full flex items-center justify-center z-10 bg-slate-200 bg-opacity-25">
+          <span
+            className="loading loading-spinner scale-[5]"
+          />
+        </div>
+      }
+      
       <Navbar />
       <section className="bg-white w-[750px] mx-auto py-[88px] px-[72px]">
         <p className="text-center text-neutral-700 text-4xl font-semibold ">Login Your Account</p>

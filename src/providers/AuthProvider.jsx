@@ -21,28 +21,33 @@ const AuthProvider = ({ children }) => {
 
   // create user with email and password
   const createUser = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   }
 
   // sign in user
   const logIn = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   }
 
   //google sign in
-  const googleSignIn = ()=>{
+  const googleSignIn = () => {
+    setLoading(true);
     const provider = new GoogleAuthProvider();
     return signInWithPopup(auth, provider);
   }
 
   // github sign in 
-  const githubSignIn = ()=>{
+  const githubSignIn = () => {
+    setLoading(true);
     const provider = new GithubAuthProvider();
     return signInWithPopup(auth, provider)
   }
 
   // signout user
-  const logOut = () =>{
+  const logOut = () => {
+    setLoading(true);
     return signOut(auth);
   }
 
